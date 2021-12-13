@@ -4,6 +4,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import flask
+from flask import render_template
 from flask_cors import CORS, cross_origin
 
 X = pd.read_csv("dummy.csv")
@@ -89,6 +90,10 @@ def predict_home_price():
     # response.header.add('Access-Control-Allow-Origin','*')
 
     return response
+
+@app.route('/')
+def root():
+    return render_template("App.html")
 
 
 if __name__ == "__main__":
